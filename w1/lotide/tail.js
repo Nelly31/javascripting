@@ -6,8 +6,15 @@ const assertEqual = function(actual,expected) {
   }
 };
 
-assertEqual("Lighthouse Labs","Bootcamp");
-assertEqual(1,1);
-assertEqual("Nelly","Nelly");
-assertEqual(5,-5);
-assertEqual(6,"6");
+const tail = function(array) {
+  return array.slice(1);
+};
+
+console.log(tail([1,2,3,4]));
+console.log(tail([1]));
+console.log(tail([]));
+
+
+const words = ["Hello", "GoodBye", "Adios"];
+tail(words);
+assertEqual(words.length,3);
