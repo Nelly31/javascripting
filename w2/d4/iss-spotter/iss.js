@@ -38,5 +38,19 @@ const fetchCoordsByIP = function(IP, callback) {
   });
 };
 
-module.exports = { fetchMyIP, fetchCoordsByIP };
+const fetchISSFlyOverTimes = function(latLongObj, callback) {
 
+  request(`http://api.open-notify.org/iss-pass.json?lat=${latLongObj.latitude}&lon=${latLongObj.longitude}`, (error, response, body) => {
+    const positionObj = JSON.parse(body);
+    if (error) {
+      callback(error, null);
+    } if (positionObj.response === undefined) {
+      callback('Nope! It\'s not working', null);
+    } else {
+      callback(null, positionObj.response);
+    }
+  });
+};
+
+
+module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes };
